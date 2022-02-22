@@ -40,7 +40,7 @@
             newDiv.innerHTML = `
                 <h3>Photo #${jsonObj[i]['photo_id']}</h3>
                 <a href='./photos/${jsonObj[i]['photo_id']}'>
-                <img src='http://localhost:3000/pic/${jsonObj[i]['photo_id']}.jpg' >
+                <img src='/pic/${jsonObj[i]['photo_id']}.jpg' >
                 </a>
                 `;
             document.body.insertBefore(newDiv, document.getElementById("end"));

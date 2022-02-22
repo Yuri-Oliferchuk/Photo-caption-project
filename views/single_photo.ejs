@@ -20,8 +20,6 @@
 
 <div id="middle">
     <form action="../api/photos/captions/<%-id%>" method="post">
-            <!-- <label for="username">User: </label>
-            <input id="username" name="username" type="text" autocomplete="Username" required autofocus> -->
             <label for="caption">Caption: </label>
             <textarea name="caption" rows="4" cols="25"></textarea>
         <button id="button" type="submit">Send new caption</button>
@@ -64,7 +62,7 @@
             newDiv.id = jsonObj[0]['photo_id'];
 
             newDiv.innerHTML = `
-                <img src='http://localhost:3000/pic/${jsonObj[0]['photo_id']}.jpg'>
+                <img src='/pic/${jsonObj[0]['photo_id']}.jpg'>
                 `;
             document.body.insertBefore(newDiv, document.getElementById("middle")); 
     }
