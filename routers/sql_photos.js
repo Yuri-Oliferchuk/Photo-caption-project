@@ -13,9 +13,17 @@ sql_photos.get('/', async(req,res) => {
 })
 
 //get photo by id
+// sql_photos.get('/:id', async(req,res) => {
+//     const id = req.params.id;
+//     const sql = 'SELECT * FROM photos WHERE photo_id = $1;'
+//     const result = await pool.query(sql, [id])
+
+//     res.json(result.rows)
+// })
+
 sql_photos.get('/:id', async(req,res) => {
     const id = req.params.id;
-    const sql = 'SELECT * FROM photos WHERE photo_id = $1;'
+    const sql = 'SELECT * FROM captions JOIN photos ON captions.photo_id = photos.photo_id WHERE captions.photo_id = $1;'
     const result = await pool.query(sql, [id])
 
     res.json(result.rows)

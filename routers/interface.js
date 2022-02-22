@@ -12,7 +12,7 @@ interface.get('/photos', redirectLogin, (req,res) => {
 
 interface.get('/photos/:id', redirectLogin, (req,res) => {
     const id = req.params.id;
-    res.render('single_photo', { id: id})
+    res.render('single_photo2', { id: id})
 })
 
 interface.get('/login', redirectHome, (req,res) => {
