@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // session config
 app.use(flash())
 app.use(session({
-    name: sid,
+    name: "sid",
     resave: false,
     saveUninitialized: false,
     secret: "XXXX",
