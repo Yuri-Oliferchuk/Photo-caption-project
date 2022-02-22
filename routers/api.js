@@ -26,8 +26,8 @@ api.post('/register', redirectHome, async(req, res) => {
         const sql = 'INSERT INTO users (username, password, email, salt) VALUES ($1, $2, $3, $4);'
         await pool.query(sql, [username, hashedPassword, email, salt])
         
+        req.flash('error', 'Registration successful');
         return res.redirect('/login')
-
     }
     return res.redirect('/register'); // if any errors
 })

@@ -40,10 +40,6 @@ app.use(passport.authenticate('session'));
 app.use('/', interface)
 app.use('/api', api)
 
-// app.get('/', (req, res)=>{
-//     res.render('index', {isLogin: false})
-// })
-
 app.listen(PORT, () => {
     console.log(`http://localhost:${PORT}/`)
 })

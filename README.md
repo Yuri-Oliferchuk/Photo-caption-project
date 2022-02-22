@@ -14,5 +14,3 @@ DB_HOST=localhost<br>
 DB_PORT=5432<br>
 DB_DATABASE=postgres<br>
 NODE_ENV=development<br>
-SESS_NAME=sid<br>
-SESS_SECRET=XXXX<br>
