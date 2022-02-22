@@ -46,8 +46,8 @@ Function for working with database
 - __findById()__ - Function for finding user by ID in database<br>
 - __findByUserName()__ - Function for finding user by Username in database<br>
 <br>
-- "cat init.sql | heroku pg:psql <db.name> --app <app.name>" - installing start database to heroku <br>
-- init.sql - file for installing start database<br>
+"cat init.sql | heroku pg:psql <db.name> --app <app.name>" - installing start database to heroku <br>
+"init.sql" - file for installing start database<br>
 <br>
 
 .env
