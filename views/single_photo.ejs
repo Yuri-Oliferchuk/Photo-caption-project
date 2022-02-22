@@ -39,21 +39,11 @@
     request.responseType = 'json';
     request.send();
 
-    let request2 = new XMLHttpRequest();
-    request2.open('GET', `../api/photos/captions/${id}`);
-    request2.responseType = 'json';
-    request2.send();
-
     request.onload = async() => {
         photoObj = await request.response;
         console.log(photoObj);
         await printPhoto(photoObj);
 
-        request2.onload = async() => {
-            captionObj = await request2.response;
-            console.log(captionObj);
-            await printCaptions(captionObj);
-        }
     }
 
     function printPhoto(jsonObj) {
@@ -65,6 +55,7 @@
                 <img src='/pic/${jsonObj[0]['photo_id']}.jpg'>
                 `;
             document.body.insertBefore(newDiv, document.getElementById("middle")); 
+            printCaptions(jsonObj);
     }
 
     function printCaptions(jsonObj) {
