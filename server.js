@@ -1,17 +1,17 @@
-// require('./config/passport.js');                         
+require('./config/passport.js');                         
 const express = require('express');
 const bodyParser = require('body-parser');
 const { serializeUser } = require('passport');
-// const session = require('express-session');                     
-// const passport = require('passport');                         
-// const flash = require('express-flash')
-// const {interface} = require('./routers/interface.js')
-// const {api} = require('./routers/api.js');
+const session = require('express-session');                     
+const passport = require('passport');                         
+const flash = require('express-flash')
+const {interface} = require('./routers/interface.js')
+const {api} = require('./routers/api.js');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// app.set('view engine', 'ejs');                           
+app.set('view engine', 'ejs');                           
 app.use(express.static(__dirname+'/public'));
 
 // add body-parser
@@ -41,7 +41,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // app.use('/api', api)
 
 app.get('/', (req, res)=>{
-    res.send('HELLO')
+    res.render('index', {isLogin: false})
 })
 
 app.listen(PORT, () => {
