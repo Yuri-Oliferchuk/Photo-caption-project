@@ -1,0 +1,47 @@
+html{
+    display: flex; 
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    background:#eeeeee;
+}
+
+h1, h3, h4 {
+    text-align: center;
+    margin: 2px;
+    
+}
+
+img {
+    width: 300px;
+}
+
+menu {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    text-align: center;
+
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+p {
+    margin: 0;
+    width: 300px;
+}
+
+#button {
+    margin-top: 5px;
+}
+
+form {
+    border: 1px;
+}

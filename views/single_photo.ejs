@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/mystyle.css">
+    <title>Photo #<%-id%></title>
+</head>
+
+<body>
+    <form action="../api/logout" method="post">
+        <button class="button" type="submit">logout</button>
+    </form> 
+
+<h1>Photo #<%-id%></h1>
+<menu>
+    <a href="../photos">back to galery</a>
+</menu>
+
+<div id="middle">
+    <form action="../api/photos/captions/<%-id%>" method="post">
+            <!-- <label for="username">User: </label>
+            <input id="username" name="username" type="text" autocomplete="Username" required autofocus> -->
+            <label for="caption">Caption: </label>
+            <textarea name="caption" rows="4" cols="25"></textarea>
+        <button id="button" type="submit">Send new caption</button>
+    </form> 
+</div>
+
+<div id='end'></div>
+</body>
+
+<script>
+    let photoObj = {};
+    let captionObj = {}
+    let id = '<%-id%>';
+
+    let request = new XMLHttpRequest();
+    request.open('GET', `../api/photos/${id}`);
+    request.responseType = 'json';
+    request.send();
+
+    let request2 = new XMLHttpRequest();
+    request2.open('GET', `../api/photos/captions/${id}`);
+    request2.responseType = 'json';
+    request2.send();
+
+    request.onload = async() => {
+        photoObj = await request.response;
+        console.log(photoObj);
+        await printPhoto(photoObj);
+
+        request2.onload = async() => {
+            captionObj = await request2.response;
+            console.log(captionObj);
+            await printCaptions(captionObj);
+        }
+    }
+
+    function printPhoto(jsonObj) {
+            let newDiv = document.createElement("div");
+            newDiv.className = "photos";
+            newDiv.id = jsonObj[0]['photo_id'];
+
+            newDiv.innerHTML = `
+                <img src='http://localhost:3000/pic/${jsonObj[0]['photo_id']}.jpg'>
+                `;
+            document.body.insertBefore(newDiv, document.getElementById("middle")); 
+    }
+
+    function printCaptions(jsonObj) {
+        let newH4 = document.createElement("h4")
+        newH4.innerText = "Captions:"
+        document.body.insertBefore(newH4, document.getElementById("end"));
+
+        for(let i=0; i<jsonObj.length; i++) {
+            let newP = document.createElement("p");
+
+            newP.innerHTML = `<strong>${jsonObj[i].caption_autor}</strong> - ${jsonObj[i].caption}`;
+            document.body.insertBefore(newP, document.getElementById("end"));
+        }
+             
+    }
+  </script>
+</html>

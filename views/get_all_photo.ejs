@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/mystyle.css">
+    <title>Photos</title>
+</head>
+
+<body>
+    <form action="../api/logout" method="post">
+        <button class="button" type="submit">logout</button>
+    </form> 
+    
+<h1>Select image</h1>
+
+<div id='end'></div>
+</body>
+
+<script>
+    let photoObj = {};
+    let request = new XMLHttpRequest();
+    request.open('GET', './api/photos');
+    request.responseType = 'json';
+    request.send();
+
+    request.onload = async() => {
+        photoObj = await request.response;
+        // console.log(photoObj);
+        await printObj(photoObj);
+    }
+
+    function printObj(jsonObj) {
+        for(let i=0; i<jsonObj.length; i++) {
+            let newDiv = document.createElement("div");
+            newDiv.className = "photos";
+            newDiv.id = jsonObj[i]['photo_id'];
+
+            newDiv.innerHTML = `
+                <h3>Photo #${jsonObj[i]['photo_id']}</h3>
+                <a href='./photos/${jsonObj[i]['photo_id']}'>
+                <img src='http://localhost:3000/pic/${jsonObj[i]['photo_id']}.jpg' >
+                </a>
+                `;
+            document.body.insertBefore(newDiv, document.getElementById("end"));
+        }
+    }
+  </script>
+</html>

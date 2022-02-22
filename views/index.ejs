@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/login.css">
+    <title>Hello</title>
+</head>
+<body>
+    <h1>Hello!!!</h1>
+    <% if(isLogin==true) {%>
+        <menu>
+            <a href='/photos'>Photos</a>
+        </menu>
+        <form action="../api/logout" method="post">
+            <button class="button" type="submit">logout</button>
+        </form>
+    <%} else {%>
+        <menu>
+            <a href='/login'>Sign In</a>
+            <a href='/registering'>Register</a>
+        </menu>
+    <%}%>
+</body>
+</html>
